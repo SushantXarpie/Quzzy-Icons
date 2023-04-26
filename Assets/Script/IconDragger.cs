@@ -62,11 +62,21 @@ public class IconDragger : MouseManipulator
 
     private void OnMouseUp(MouseUpEvent evt)
     {
-        iconContainer.Add(target);
+        if (!isActive || !target.HasMouseCapture()) return;
 
-        target.style.top = elementStartPositionLocal.y - iconContainer.contentRect.position.y;
-        target.style.left = elementStartPositionLocal.x - iconContainer.contentRect.position.x;
+        if (target.worldBound.Overlaps(dropZone.worldBound))
+        {
+            dropZone.Add(target);
+            target.style.top = dropZone.contentRect.center.y - target.layout.height / 2;
+            target.style.left = dropZone.contentRect.center.x - target.layout.width / 2;
+        }
+        else
+        {
+            iconContainer.Add(target);
 
+            target.style.top = elementStartPositionLocal.y - iconContainer.contentRect.position.y;
+            target.style.left = elementStartPositionLocal.x - iconContainer.contentRect.position.x;
+        }
         isActive = false;
         target.ReleaseMouse();
         evt.StopPropagation();
