@@ -16,7 +16,18 @@
                 <ui:VisualElement name="Scores" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 70%;">
                     <ui:Label tabindex="-1" text="Score 123" display-tooltip-when-elided="true" style="font-size: 30px; color: rgb(12, 10, 10); -unity-font-definition: resource(&apos;Fonts/AlumniSansPinstripe-Regular SDF&apos;);" />
                 </ui:VisualElement>
-                <ui:VisualElement name="IconBoard" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 70%; height: 70%; border-left-width: 20px; border-right-width: 20px; border-top-width: 20px; border-bottom-width: 20px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77);" />
+                <ui:VisualElement name="IconBoard" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 70%; height: 70%; border-left-width: 20px; border-right-width: 20px; border-top-width: 20px; border-bottom-width: 20px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77);">
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 23px; left: 20px;" />
+                    <ui:VisualElement name="TestIcon" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 21px; left: 525px;" />
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 48px; left: 285px;" />
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 122px; left: 103px;" />
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 167px; left: 263px;" />
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 167px; left: 446px;" />
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 261px; left: 49px;" />
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 320px; left: 145px;" />
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 277px; left: 307px;" />
+                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 317px; left: 465px;" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="AnswerContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-basis: 100%; justify-content: center;">
                 <ui:VisualElement name="AnswerBoard" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 70%; height: 70%;">
@@ -30,7 +41,7 @@
                     <ui:VisualElement name="QuestionText" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: 30%;">
                         <ui:Label tabindex="-1" text="Start Text" display-tooltip-when-elided="true" name="Hint" style="font-size: 40px; -unity-font-definition: resource(&apos;Fonts/AlumniSansPinstripe-Regular SDF&apos;); -unity-font-style: bold;" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="DropContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: 50%; align-items: center; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                    <ui:VisualElement name="DropContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: 50%; align-items: center; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); justify-content: center;">
                         <ui:VisualElement style="flex-grow: 0; background-color: rgb(212, 43, 43); width: 35%; height: 60%; border-left-color: rgba(192, 55, 55, 0); border-right-color: rgba(192, 55, 55, 0); border-top-color: rgba(192, 55, 55, 0); border-bottom-color: rgba(192, 55, 55, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
                         <ui:Label tabindex="-1" text="Drag your Answer Here" display-tooltip-when-elided="true" style="font-size: 38px;" />
                     </ui:VisualElement>
@@ -38,4 +49,5 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="DragArea" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; width: 100%; height: 100%; display: none;" />
 </ui:UXML>
