@@ -29,6 +29,11 @@ public class UIController : MonoBehaviour
         currentScoreLabel = root.Q<Label>("MyScore");
     }
 
+    private void Start()
+    {
+        controller = GetComponent<Controller>();
+    }
+
     public void SetHint(string hintText)
     {
         hint.text = hintText;
