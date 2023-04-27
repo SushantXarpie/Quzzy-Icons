@@ -6,10 +6,10 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public Game game;
-    // public UIController uiController; 
+    public UIController uiController; 
 
     public void Init()
-    {
+    { 
         game.InitializeGame();
         UpdateUI();
     }
@@ -29,6 +29,9 @@ public class Controller : MonoBehaviour
 
     private void UpdateUI()
     {
+        uiController.SetHint(game.currentHint);
+        uiController.SetQuestionNumber(game.QuestionIndex);
+        uiController.SetHintNumber(game.HintIndex);
 
     }
 }

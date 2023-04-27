@@ -14,7 +14,7 @@
         <ui:VisualElement name="LowerContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
             <ui:VisualElement name="IconContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-basis: 100%; align-items: center; justify-content: center;">
                 <ui:VisualElement name="Scores" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 70%;">
-                    <ui:Label tabindex="-1" text="Score 123" display-tooltip-when-elided="true" style="font-size: 30px; color: rgb(12, 10, 10); -unity-font-definition: resource(&apos;Fonts/AlumniSansPinstripe-Regular SDF&apos;);" />
+                    <ui:Label tabindex="-1" text="Score 123" display-tooltip-when-elided="true" name="MyScore" style="font-size: 30px; color: rgb(12, 10, 10); -unity-font-definition: resource(&apos;Fonts/AlumniSansPinstripe-Regular SDF&apos;);" />
                 </ui:VisualElement>
                 <ui:VisualElement name="IconBoard" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 70%; height: 70%; border-left-width: 20px; border-right-width: 20px; border-top-width: 20px; border-bottom-width: 20px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77);">
                     <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 64px; height: 64px; background-image: resource(&apos;Images/arc&apos;); position: absolute; top: 23px; left: 20px;" />
