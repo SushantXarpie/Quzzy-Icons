@@ -16,18 +16,18 @@ public class Controller : MonoBehaviour
         UpdateUI();
     }
 
-    public void HandleAnswer(string answer)
+    public void HandleCorrectAnswer()
     {
-        if (game.IsAnswerCorrect(answer))
-        {
-            game.HandleCorrectAnswer();
-        }
-        else
-        {
-            game.HandleWrongAnswer();
-        }
+        game.HandleCorrectAnswer();
         UpdateUI();
     }
+
+    public void HandleWrongAnswer()
+    {
+        game.HandleWrongAnswer();
+        UpdateUI();
+    }
+
 
     private void UpdateUI()
     {
