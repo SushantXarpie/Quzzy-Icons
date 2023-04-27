@@ -40,6 +40,7 @@ public class UIController : MonoBehaviour
     private void Initialize()
     {
         nextHintButton.clicked += () => controller.HandleWrongAnswer();
+        Setup.Initialize(root);
     }
 
     public void SetHint(string hintText)
