@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Controller controller;
 
     private VisualElement root;
+    private VisualElement dropZone;
     private Label hint;
     private Label questionNumberLabel;
     private Label hintNumberLabel;
@@ -39,6 +40,7 @@ public class UIController : MonoBehaviour
         highScoreLabel = root.Q<Label>("HighScore");
         currentScoreLabel = root.Q<Label>("MyScore");
         nextHintButton = root.Q<Button>("NextHintButton");
+        dropZone = root.Q<VisualElement>("DropZone");
 
         Initialize();
     }
@@ -66,5 +68,27 @@ public class UIController : MonoBehaviour
     {
         hintNumberLabel.text = $"Hint {hintNumber} :";
         Debug.Log($"Hint Number = {hintNumber}");
+    }
+
+    public void GiveAnswerFeedBack(bool correct)
+    {
+        answer_indicator.style.visibility = Visibility.Visible;
+        answer_indicator.text = correct ? "Your answer was Correct" : "Your answer was Wrong";
+
+        StyleColor color = correct ? new StyleColor(new Color32(0, 132, 19, 255)) : new StyleColor(new Color32(132, 0, 19, 255));
+        answer_indicator.style.color = color;
+        StartCoroutine(CleanUpQuestion());
+    }
+
+    private IEnumerator CleanUpQuestion()
+    {
+        yield return new WaitForSeconds(3);
+        answer_indicator.style.visibility = Visibility.Hidden;
+
+        if(dropZone.childCount > 0)
+        {
+            dropZone.RemoveAt(0);
+        }
+
     }
 }

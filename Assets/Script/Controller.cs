@@ -43,6 +43,7 @@ public class Controller : MonoBehaviour
             HandleWrongAnswer();
             Debug.Log("Wrong Answer");
         }
+        uiController.GiveAnswerFeedBack(game.IsAnswerCorrect(answer));
     }
 
     public List<Question> GetQuestions()
