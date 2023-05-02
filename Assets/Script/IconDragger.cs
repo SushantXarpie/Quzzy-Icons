@@ -10,9 +10,9 @@ public class IconDragger : MouseManipulator
     private VisualElement iconContainer;
     private VisualElement dropZone;
 
-    private Vector2 startPosition;
-    private Vector2 elementStartPositionLocal;
-    private Vector2 elementStartPositionGlobal;
+    private Vector3 startPosition;
+    private Vector3 elementStartPositionLocal;
+    private Vector3 elementStartPositionGlobal;
 
     bool isActive;
 
@@ -27,23 +27,22 @@ public class IconDragger : MouseManipulator
 
     protected override void RegisterCallbacksOnTarget()
     {
-        target.RegisterCallback<MouseDownEvent>(OnMouseDown);
-        target.RegisterCallback<MouseMoveEvent>(OnMouseMove);
-        target.RegisterCallback<MouseUpEvent>(OnMouseUp);
+        target.RegisterCallback<PointerDownEvent>(OnPointerDown);
+        target.RegisterCallback<PointerMoveEvent>(OnPointerMove);
+        target.RegisterCallback<PointerUpEvent>(OnPointerUp);
     }
 
     protected override void UnregisterCallbacksFromTarget()
     {
-        target.UnregisterCallback<MouseDownEvent>(OnMouseDown);
-        target.UnregisterCallback<MouseMoveEvent>(OnMouseMove);
-        target.UnregisterCallback<MouseUpEvent>(OnMouseUp);
+        target.RegisterCallback<PointerDownEvent>(OnPointerDown);
+        target.RegisterCallback<PointerMoveEvent>(OnPointerMove);
+        target.RegisterCallback<PointerUpEvent>(OnPointerUp);
     }
 
-    private void OnMouseDown(MouseDownEvent evt)
+    private void OnPointerDown(PointerDownEvent evt)
     {
-        Debug.Log("OnMouseDown");
         iconContainer = target.parent;
-        startPosition = evt.localMousePosition;
+        startPosition = evt.localPosition;
 
         elementStartPositionLocal = target.layout.position;
         elementStartPositionGlobal = target.worldBound.position;
@@ -57,19 +56,17 @@ public class IconDragger : MouseManipulator
         evt.StopPropagation(); // Prevents the event from bubbling up to the parent element
     }
 
-    private void OnMouseMove(MouseMoveEvent evt)
+    private void OnPointerMove(PointerMoveEvent evt)
     {
         if (!isActive || !target.HasMouseCapture()) return;
-        Debug.Log("OnMouseMove");
-        Vector2 delta = evt.localMousePosition - startPosition;
+        Vector2 delta = evt.localPosition - startPosition;
         target.style.top = target.layout.y + delta.y;
         target.style.left = target.layout.x + delta.x;
     }
 
-    private void OnMouseUp(MouseUpEvent evt)
+    private void OnPointerUp(PointerUpEvent evt)
     {
         if (!isActive || !target.HasMouseCapture()) return;
-        Debug.Log("OnMouseUp");
 
         if (target.worldBound.Overlaps(dropZone.worldBound))
         {

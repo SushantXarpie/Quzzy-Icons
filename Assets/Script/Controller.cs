@@ -7,6 +7,27 @@ public class Controller : MonoBehaviour
 {
     [SerializeField] private Game game;
     [SerializeField] private UIController uiController;
+
+
+    private int currentCounter;
+    public int CurrentCounter
+    {
+        get
+        {
+            return currentCounter;
+        }
+        set
+        {
+            if (value == 0)
+            {
+                HandleWrongAnswer();
+                return;
+            }
+            uiController.SetTimer(currentCounter);
+            currentCounter = value;
+        }
+    }
+
     private void Awake()
     {
         Debug.Log("Controller Awake" + Time.time);
@@ -17,22 +38,28 @@ public class Controller : MonoBehaviour
     {
         game.InitializeGame();
         UpdateUI();
+
+        ResetCounter();
+        StartCoroutine(UpdateCounter());
     }
 
     public void HandleCorrectAnswer()
     {
         game.HandleCorrectAnswer();
         UpdateUI();
+        ResetCounter();
     }
 
     public void HandleWrongAnswer()
     {
         game.HandleWrongAnswer();
         UpdateUI();
+        ResetCounter();
     }
 
     public void CheckAnswer(string answer)
     {
+        uiController.GiveAnswerFeedBack(game.IsAnswerCorrect(answer));
         if (game.IsAnswerCorrect(answer))
         {
             HandleCorrectAnswer();
@@ -43,13 +70,25 @@ public class Controller : MonoBehaviour
             HandleWrongAnswer();
             Debug.Log("Wrong Answer");
         }
-        uiController.GiveAnswerFeedBack(game.IsAnswerCorrect(answer));
     }
 
     public List<Question> GetQuestions()
     {
         if (game == null) Awake();
         return game.questions;
+    }
+
+
+    private void ResetCounter()
+    {
+        CurrentCounter = 30;
+    }
+
+    private IEnumerator UpdateCounter()
+    {
+        yield return new WaitForSeconds(1);
+        CurrentCounter--;
+        StartCoroutine(UpdateCounter());
     }
 
     private void UpdateUI()

@@ -27,11 +27,9 @@ public class UIController : MonoBehaviour
 
     private void OnEnable()
     {
-        // Debug.Log("UIController OnEnable" + Time.time);
-        // controller = GetComponent<Controller>();
-        GetComponent<UIDocument>().rootVisualElement.style.scale = new Vector2(Screen.safeArea.width / Screen.width, Screen.safeArea.height / Screen.height);
         root = GetComponent<UIDocument>().rootVisualElement;
-
+        root.style.scale = new Vector2(Screen.safeArea.width / Screen.width, Screen.safeArea.height / Screen.height);
+        root.Q<VisualElement>("MainContainer").style.scale = new Vector2(Screen.safeArea.width / Screen.width, Screen.safeArea.height / Screen.height);
         hint = root.Q<Label>("Hint");
         questionNumberLabel = root.Q<Label>("QuestionCounter");
         hintNumberLabel = root.Q<Label>("HintNum");
@@ -70,8 +68,14 @@ public class UIController : MonoBehaviour
         Debug.Log($"Hint Number = {hintNumber}");
     }
 
+    public void SetTimer(int time)
+    {
+        timeLabel.text = $"Time Remaining : {time} seconds";
+    }
+
     public void GiveAnswerFeedBack(bool correct)
     {
+        Debug.Log($"Answer is {correct}");
         answer_indicator.style.visibility = Visibility.Visible;
         answer_indicator.text = correct ? "Your answer was Correct" : "Your answer was Wrong";
 
@@ -85,7 +89,7 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(3);
         answer_indicator.style.visibility = Visibility.Hidden;
 
-        if(dropZone.childCount > 0)
+        if (dropZone.childCount > 0)
         {
             dropZone.RemoveAt(0);
         }
