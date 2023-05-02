@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf8046a8f139f34d942ded3d89b29a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 376074532}
 --- !u!114 &376074532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,8 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544f1844ef1682042b1fcff39b4f9324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
-  uiController: {fileID: 0}
+  game: {fileID: 376074533}
+  uiController: {fileID: 376074531}
 --- !u!114 &376074533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +217,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e1128e8dfa673f4b83b09be82046c32, type: 2}
   - {fileID: 11400000, guid: c899e032d7ae60844b1876870ed0f551, type: 2}
   - {fileID: 11400000, guid: 4255205dd3b16e643b75c6b35f19b856, type: 2}
+  - {fileID: 11400000, guid: 88fe43ee11d2bbb479567cedabf49828, type: 2}
+  - {fileID: 11400000, guid: 521faf2611bd65f48ae445eebf5233e2, type: 2}
+  - {fileID: 11400000, guid: a637168eb5064a04eab75aa4683748a3, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

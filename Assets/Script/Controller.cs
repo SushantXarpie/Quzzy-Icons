@@ -8,10 +8,14 @@ public class Controller : MonoBehaviour
     public Game game;
     public UIController uiController;
 
+    // private void OnEnable()
+    // {
+    //     game = GetComponent<Game>();
+    //     uiController = GetComponent<UIController>();
+    // }
+
     private void Start()
     {
-        game = GetComponent<Game>();
-        uiController = GetComponent<UIController>();
         game.InitializeGame();
         UpdateUI();
     }
@@ -28,6 +32,10 @@ public class Controller : MonoBehaviour
         UpdateUI();
     }
 
+    public List<Question> GetQuestions()
+    {
+        return game.questions;
+    }
 
     private void UpdateUI()
     {

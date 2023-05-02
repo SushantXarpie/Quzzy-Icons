@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
 
     private void OnEnable()
     {
-        controller = GetComponent<Controller>();
+        // controller = GetComponent<Controller>();
 
         GetComponent<UIDocument>().rootVisualElement.style.scale = new Vector2(Screen.safeArea.width / Screen.width, Screen.safeArea.height / Screen.height);
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -40,7 +40,8 @@ public class UIController : MonoBehaviour
     private void Initialize()
     {
         nextHintButton.clicked += () => controller.HandleWrongAnswer();
-        Setup.Initialize(root);
+        Setup.InitializeDragAndDrop(root);
+        Setup.InitializeIcons(root, controller.GetQuestions());
     }
 
     public void SetHint(string hintText)
