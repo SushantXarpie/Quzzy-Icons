@@ -4,18 +4,21 @@ using UnityEngine.UIElements;
 
 public class IconDragger : MouseManipulator
 {
-    VisualElement dragArea;
-    VisualElement iconContainer;
-    VisualElement dropZone;
+    private Controller controller;
 
-    Vector2 startPosition;
-    Vector2 elementStartPositionLocal;
-    Vector2 elementStartPositionGlobal;
+    private VisualElement dragArea;
+    private VisualElement iconContainer;
+    private VisualElement dropZone;
+
+    private Vector2 startPosition;
+    private Vector2 elementStartPositionLocal;
+    private Vector2 elementStartPositionGlobal;
 
     bool isActive;
 
-    public IconDragger(VisualElement root)
+    public IconDragger(VisualElement root, Controller controller)
     {
+        this.controller = controller;
         dragArea = root.Q("DragArea");
         dropZone = root.Q("DropZone");
 
@@ -38,6 +41,7 @@ public class IconDragger : MouseManipulator
 
     private void OnMouseDown(MouseDownEvent evt)
     {
+        Debug.Log("OnMouseDown");
         iconContainer = target.parent;
         startPosition = evt.localMousePosition;
 
@@ -45,16 +49,18 @@ public class IconDragger : MouseManipulator
         elementStartPositionGlobal = target.worldBound.position;
 
         dragArea.style.display = DisplayStyle.Flex;
+        dragArea.Add(target);
+        target.style.top = elementStartPositionGlobal.y;
+        target.style.left = elementStartPositionGlobal.x;
         target.CaptureMouse();
         isActive = true;
         evt.StopPropagation(); // Prevents the event from bubbling up to the parent element
-        dragArea.Add(target);
     }
 
     private void OnMouseMove(MouseMoveEvent evt)
     {
         if (!isActive || !target.HasMouseCapture()) return;
-
+        Debug.Log("OnMouseMove");
         Vector2 delta = evt.localMousePosition - startPosition;
         target.style.top = target.layout.y + delta.y;
         target.style.left = target.layout.x + delta.x;
@@ -63,12 +69,16 @@ public class IconDragger : MouseManipulator
     private void OnMouseUp(MouseUpEvent evt)
     {
         if (!isActive || !target.HasMouseCapture()) return;
+        Debug.Log("OnMouseUp");
 
         if (target.worldBound.Overlaps(dropZone.worldBound))
         {
             dropZone.Add(target);
             target.style.top = dropZone.contentRect.center.y - target.layout.height / 2;
             target.style.left = dropZone.contentRect.center.x - target.layout.width / 2;
+
+            Debug.Log($"The Provided answer is {((Question)target.userData).display_answer}");
+            controller.CheckAnswer(((Question)target.userData).answer);
         }
         else
         {

@@ -5,15 +5,14 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    public Game game;
-    public UIController uiController;
-
-    // private void OnEnable()
-    // {
-    //     game = GetComponent<Game>();
-    //     uiController = GetComponent<UIController>();
-    // }
-
+    [SerializeField] private Game game;
+    [SerializeField] private UIController uiController;
+    private void Awake()
+    {
+        Debug.Log("Controller Awake" + Time.time);
+        game = GetComponent<Game>();
+        uiController = GetComponent<UIController>();
+    }
     private void Start()
     {
         game.InitializeGame();
@@ -32,8 +31,23 @@ public class Controller : MonoBehaviour
         UpdateUI();
     }
 
+    public void CheckAnswer(string answer)
+    {
+        if (game.IsAnswerCorrect(answer))
+        {
+            HandleCorrectAnswer();
+            Debug.Log("Correct Answer");
+        }
+        else
+        {
+            HandleWrongAnswer();
+            Debug.Log("Wrong Answer");
+        }
+    }
+
     public List<Question> GetQuestions()
     {
+        if (game == null) Awake();
         return game.questions;
     }
 

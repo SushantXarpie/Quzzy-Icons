@@ -133,9 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 376074529}
   - component: {fileID: 376074530}
+  - component: {fileID: 376074532}
   - component: {fileID: 376074531}
   - component: {fileID: 376074533}
-  - component: {fileID: 376074532}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf8046a8f139f34d942ded3d89b29a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 376074532}
+  controller: {fileID: 0}
 --- !u!114 &376074532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,8 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544f1844ef1682042b1fcff39b4f9324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 376074533}
-  uiController: {fileID: 376074531}
+  game: {fileID: 0}
+  uiController: {fileID: 0}
 --- !u!114 &376074533
 MonoBehaviour:
   m_ObjectHideFlags: 0

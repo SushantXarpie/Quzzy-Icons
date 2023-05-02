@@ -5,11 +5,11 @@ using UnityEngine.UIElements;
 
 public class Setup
 {
-    public static void InitializeDragAndDrop(VisualElement root)
+    public static void InitializeDragAndDrop(VisualElement root, Controller controller)
     {
         root.Query<VisualElement>("IconBoard").Children<VisualElement>().ForEach((icon) =>
         {
-            icon.AddManipulator(new IconDragger(root));
+            icon.AddManipulator(new IconDragger(root, controller));
         });
     }
 

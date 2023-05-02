@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class UIController : MonoBehaviour
 {
-    public Controller controller;
+    [SerializeField] private Controller controller;
 
     private VisualElement root;
     private Label hint;
@@ -18,10 +18,16 @@ public class UIController : MonoBehaviour
     private Label currentScoreLabel;
     private Button nextHintButton;
 
+    private void Awake()
+    {
+        Debug.Log("UIController Awake" + Time.time);
+        controller = GetComponent<Controller>();
+    }
+
     private void OnEnable()
     {
+        // Debug.Log("UIController OnEnable" + Time.time);
         // controller = GetComponent<Controller>();
-
         GetComponent<UIDocument>().rootVisualElement.style.scale = new Vector2(Screen.safeArea.width / Screen.width, Screen.safeArea.height / Screen.height);
         root = GetComponent<UIDocument>().rootVisualElement;
 
@@ -40,7 +46,7 @@ public class UIController : MonoBehaviour
     private void Initialize()
     {
         nextHintButton.clicked += () => controller.HandleWrongAnswer();
-        Setup.InitializeDragAndDrop(root);
+        Setup.InitializeDragAndDrop(root, controller);
         Setup.InitializeIcons(root, controller.GetQuestions());
     }
 
